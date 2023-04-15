@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Android_AppOrderCoffee"
         tools:targetApi="31">
         <activity
-            android:name=".GUI.WelcomeActivity"
+            android:name=".GUI.MainActivity"
             android:exported="true" />
         <activity
             android:name=".GUI.RegisterActivity"
@@ -27,7 +27,7 @@
             android:name=".GUI.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".GUI.MainActivity"
+            android:name=".GUI.WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
