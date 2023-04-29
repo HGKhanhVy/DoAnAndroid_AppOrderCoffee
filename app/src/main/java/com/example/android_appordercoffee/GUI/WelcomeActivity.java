@@ -18,8 +18,11 @@ public class WelcomeActivity extends AppCompatActivity {
         ButtonClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
-                startActivity(i);
+               // Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
+               //startActivity(i);
+
+                Intent intent = new Intent(WelcomeActivity.this,chitiethoadon.class);
+                startActivity(intent);
             }
         });
     }
