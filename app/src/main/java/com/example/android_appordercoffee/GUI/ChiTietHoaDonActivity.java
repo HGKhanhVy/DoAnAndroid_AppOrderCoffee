@@ -11,7 +11,7 @@ import com.example.android_appordercoffee.R;
 
 import java.util.ArrayList;
 
-public class chitiethoadon extends AppCompatActivity {
+public class ChiTietHoaDonActivity extends AppCompatActivity {
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

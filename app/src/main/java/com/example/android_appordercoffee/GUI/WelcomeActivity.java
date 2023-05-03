@@ -21,7 +21,7 @@ public class WelcomeActivity extends AppCompatActivity {
                // Intent i = new Intent(WelcomeActivity.this, LoginActivity.class);
                //startActivity(i);
 
-                Intent intent = new Intent(WelcomeActivity.this,chitiethoadon.class);
+                Intent intent = new Intent(WelcomeActivity.this, ChiTietHoaDonActivity.class);
                 startActivity(intent);
             }
         });

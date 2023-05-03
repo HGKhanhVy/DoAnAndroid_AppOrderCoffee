@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/soDo"
+        android:title="Sơ đồ bàn"
+        android:icon="@drawable/baseline_map_24" />
+    <item android:id="@+id/order"
+        android:title="Order"
+        android:icon="@drawable/baseline_edit_note_24" />
+    <item android:id="@+id/tamTinh"
+        android:title="Tạm tính"
+        android:icon="@drawable/baseline_receipt_24" />
+    <item android:id="@+id/tienIch"
+        android:title="Tiện tích"
+        android:icon="@drawable/baseline_menu_24" />
+</menu>
