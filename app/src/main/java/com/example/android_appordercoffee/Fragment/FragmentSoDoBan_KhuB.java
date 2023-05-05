@@ -36,7 +36,13 @@ public class FragmentSoDoBan_KhuB extends Fragment implements BanRecycleViewAdap
         recyclerView = view.findViewById(R.id.recyclerView_SoDoBanKhuB);
         adapter = new BanRecycleViewAdapter();
         db = new SQLiteHelper(getContext());
+<<<<<<< HEAD:app/src/main/java/com/example/android_appordercoffee/Fragment/FragmentSoDoBan_KhuB.java
         List<BanDTO> listBan = db.getBanKhuB();
+=======
+        BanDTO ban = new BanDTO("A6","Trống");
+        db.addBan(ban);
+        List<BanDTO> listBan = db.getAll();
+>>>>>>> 0f65379c6b5a888e5448e8f45e178ccedb004594:app/src/main/java/com/example/android_appordercoffee/Fragment/FragmentSoDoBan.java
         adapter.setListBan(listBan);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(manager);

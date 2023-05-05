@@ -1,4 +1,4 @@
-package com.example.android_appordercoffee.BLL;
+package com.example.android_appordercoffee.DAL;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -51,7 +51,7 @@ public class ChiTietHoaDon_Adapter  extends BaseAdapter {
         //lấy môt người trong list ra
         CT_HoaDon_DTO items = list.get(i);
 
-        txt_TenSanPham.setText(items.getTenSanPham());
+        txt_TenSanPham.setText(items.getTenNuoc());
         txt_DonGia.setText(String.valueOf(items.getDonGia()));
         txt_SoLuong.setText(String.valueOf(items.getSoLuong()));
         txt_ThanhTien.setText(String.valueOf(items.getThanhTien()));

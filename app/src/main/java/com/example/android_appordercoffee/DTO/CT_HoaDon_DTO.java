@@ -1,13 +1,15 @@
 package com.example.android_appordercoffee.DTO;
 
-public class CT_HoaDon_DTO {
-    private String MaHoaDon, MaSanPham,TenSanPham;
+import java.io.Serializable;
+
+public class CT_HoaDon_DTO implements Serializable {
+    private String MaHoaDon, _maNuoc,_tenNuoc;
     int SoLuong;
     float DonGia, ThanhTien;
-    public CT_HoaDon_DTO(String MaHoaDon , String MaSP, String TenSp, int SoLuong, float DonGia,float ThanhTien){
+    public CT_HoaDon_DTO(String MaHoaDon , String MaNuoc, String TenNuoc, int SoLuong, float DonGia,float ThanhTien){
         this.MaHoaDon = MaHoaDon;
-        this.MaSanPham = MaSP;
-        this.TenSanPham = TenSp;
+        this._maNuoc = MaNuoc;
+        this._tenNuoc = TenNuoc;
         this.SoLuong = SoLuong;
         this. DonGia = DonGia;
         this.ThanhTien = ThanhTien;
@@ -20,20 +22,20 @@ public class CT_HoaDon_DTO {
         MaHoaDon = maHoaDon;
     }
 
-    public String getMaSanPham() {
-        return MaSanPham;
+    public String getMaNuoc() {
+        return _maNuoc;
     }
 
-    public void setMaSanPham(String maSanPham) {
-        MaSanPham = maSanPham;
+    public void setMaNuoc(String maNuoc) {
+        _maNuoc = maNuoc;
     }
 
-    public String getTenSanPham() {
-        return TenSanPham;
+    public String getTenNuoc() {
+        return _tenNuoc;
     }
 
-    public void setTenSanPham(String tenSanPham) {
-        TenSanPham = tenSanPham;
+    public void setTenNuoc(String tenNuoc) {
+        _tenNuoc = tenNuoc;
     }
 
     public int getSoLuong() {
