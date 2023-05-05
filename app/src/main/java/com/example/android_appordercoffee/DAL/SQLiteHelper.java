@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.example.android_appordercoffee.DTO.BanDTO;
 import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
+import com.example.android_appordercoffee.DTO.HoaDon_DTO;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QL_QuanCafe.db";
@@ -113,6 +114,25 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "CONSTRAINT FK_CT_HOADO_CT_HOADON_HOADON Foreign Key (MAHOADON) references HOADON (MAHOADON))";
         db.execSQL(sql);
     }
+    public ArrayList<HoaDon_DTO> getListHDByHoaDon(String trangthai_ )
+    {
+        ArrayList<HoaDon_DTO> list = new ArrayList<>();
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM HOADON where TRANGTHAI ='"+trangthai_+"'";
+
+        //Cursor rs = rdb.query("HOADON", null, null);
+        Cursor rs = rdb.rawQuery(query,null);
+        while(rs != null && rs.moveToNext()) {
+
+            String maban = rs.getString(5).toString();
+            String mahoadon =rs.getString(0).toString();
+            String trangthai =rs.getString(4).toString();
+
+            HoaDon_DTO hd = new HoaDon_DTO(maban,mahoadon,trangthai, null, null, null, null, null);
+            list.add(hd);
+        }
+        return list;
+    }
     public ArrayList<CT_HoaDon_DTO> getListCTHDByHoaDon(String MaHoaDon ){
         ArrayList<CT_HoaDon_DTO> list = new ArrayList<>();
         SQLiteDatabase rdb = getReadableDatabase();
@@ -130,6 +150,30 @@ public class SQLiteHelper extends SQLiteOpenHelper {
             list.add(cthd);
         }
         return list;
+    }
+    public long add_HoaDon(HoaDon_DTO hd) {
+        ContentValues values = new ContentValues();
+        values.put("MABAN", hd.getMaban());
+        values.put("MAHOADON", hd.getMahd());
+        values.put("TRANGTHAI", hd.getTrangthai());
+
+      /*  "MAHOADON TEXT NOT NULL," +
+                "MANHANVIEN TEXT," +
+                "TENHOADON TEXT," +
+                "NGAYXUAT NUMERIC," +
+                "TRANGTHAI TEXT," +
+                "MABAN TEXT," +
+                "GIOVAO NUMERIC," +
+                "GIORA NUMERIC," + */
+
+        values.put("MANHANVIEN", hd.getManv());
+        values.put("TENHOADON", hd.getTenhd());
+        values.put("NGAYXUAT", hd.getNgayxuat());
+        values.put("GIOVAO", hd.getGiovao());
+        values.put("GIORA", hd.getGiora());
+
+        SQLiteDatabase databse = getWritableDatabase();
+        return databse.insert("HOADON", null, values);
     }
     public long add_CTHoaDon(CT_HoaDon_DTO cthd) {
         ContentValues values = new ContentValues();

@@ -29,14 +29,20 @@
         <activity
             android:name=".GUI.MainActivity"
             android:exported="true" />
+
         <activity
             android:name=".GUI.ChiTietHoaDonActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".GUI.HoaDonActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
