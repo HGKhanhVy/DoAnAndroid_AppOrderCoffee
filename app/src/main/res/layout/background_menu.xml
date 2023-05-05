@@ -11,32 +11,26 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="60dp"
             android:layout_marginEnd="20dp">
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/background_food"
-                android:alpha="0.3"
-                app:tint="#77000000"/>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="3dp"
-                android:layout_marginEnd="3dp"
-                android:src="@drawable/background_food"/>
-        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/img_drink"
-            android:layout_width="120dp"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:src="@drawable/drink"
-            android:background="@android:color/transparent" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:src="@drawable/background_food"
+                app:tint="#77000000" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/background_food" />
+        </RelativeLayout>
         <RelativeLayout
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -77,13 +71,6 @@
                 android:fontFamily="@font/poppins_medium"
                 android:textSize="40sp"
                 android:paddingBottom="1dp"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="1"
-                android:text="37 items"
-                android:textColor="#989898"
-                android:textSize="15sp"/>
         </LinearLayout>
     </RelativeLayout>
 

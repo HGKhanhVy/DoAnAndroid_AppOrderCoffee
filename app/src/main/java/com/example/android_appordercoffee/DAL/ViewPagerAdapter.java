@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.example.android_appordercoffee.Fragment.FragmentOrder;
-import com.example.android_appordercoffee.Fragment.FragmentSoDoBan;
-import com.example.android_appordercoffee.Fragment.FragmentTamTinh;
-import com.example.android_appordercoffee.Fragment.FragmentTienIch;
+import com.example.android_appordercoffee.Fragment.FragmentSoDoBan_KhuA;
+import com.example.android_appordercoffee.Fragment.FragmentSoDoBan_KhuB;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     // Khi dua vao se refresh lại fragment
@@ -20,16 +19,14 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0: return new FragmentSoDoBan();
-            case 1: return new FragmentOrder();
-            case 2: return new FragmentTamTinh();
-            case 3: return new FragmentTienIch();
+            case 0: return new FragmentSoDoBan_KhuA();
+            case 1: return new FragmentSoDoBan_KhuB();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 4; // Co 4 fragment
+        return 2; // Co 2 fragment
     }
 }

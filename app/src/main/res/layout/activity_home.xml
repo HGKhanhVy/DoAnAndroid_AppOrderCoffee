@@ -3,11 +3,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:title="Sơ đồ bàn"
+        android:background="#FF87A1FF"
+        app:titleMarginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_nav"/>
+        android:layout_above="@+id/bottom_nav"
+        android:contentDescription="Trang chung hien thi ban" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"

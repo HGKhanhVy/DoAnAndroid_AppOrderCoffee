@@ -6,16 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import androidx.annotation.Nullable;
 
 import com.example.android_appordercoffee.DTO.BanDTO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SQLiteHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "QL_QuanCafe";
+    private static final String DATABASE_NAME = "QL_QuanCafe.db";
     private static int DATABASE_VERSION = 1;
+    private Context mContext;
 
     public SQLiteHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -25,85 +27,85 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // Tao Bang
     public void onCreate(SQLiteDatabase db) {
         String sql = "Create Table IF NOT EXISTS BAN(" +
-                "MABAN CHAR(5)," +
-                "TRANGTHAI NVARCHAR(15)," +
-                "CONSTRAINT  PK_BAN PRIMARY KEY (MABAN))";
+                "MABAN TEXT NOT NULL," +
+                "TRANGTHAI TEXT," +
+                "CONSTRAINT PK_BAN PRIMARY KEY(MABAN))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS CALAM(" +
-                "MACALAM VARCHAR(15)," +
-                "TENCALAM NVARCHAR(50)," +
-                "THOIGIANBATDAU TIME," +
-                "THOIGIANKETTHUC TIME," +
-                "CONSTRAINT PK_CALAM Primary Key (MACALAM))";
+                "MACALAM TEXT NOT NULL," +
+                "TENCALAM TEXT," +
+                "THOIGIANBATDAU NUMERIC," +
+                "THOIGIANKETTHUC NUMERIC," +
+                "CONSTRAINT PK_CALAM PRIMARY KEY(MACALAM))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS CHUCVU(" +
-                "MACHUCVU VARCHAR(15)," +
-                "TENCHUCVU NVARCHAR(50)," +
-                "CONSTRAINT PK_CHUCVU Primary Key (MACHUCVU))";
+                "MACHUCVU TEXT NOT NULL," +
+                "TENCHUCVU TEXT," +
+                "CONSTRAINT PK_CHUCVU PRIMARY KEY(MACHUCVU))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS KHACHHANG(" +
-                "MAKHACHHANG VARCHAR(15)," +
-                "THOIGIANDEN DATETIME," +
-                "MABAN VARCHAR(15)," +
-                "CONSTRAINT PK_KHACHHANG Primary Key (MAKHACHHANG)," +
-                "CONSTRAINT FK_KHACHHANG_BAN Foreign Key (MABAN) references BAN (MABAN))";
+                "MAKHACHHANG TEXT NOT NULL," +
+                "THOIGIANDEN NUMERIC," +
+                "MABAN TEXT," +
+                "CONSTRAINT FK_KHACHHANG_BAN FOREIGN KEY(MABAN) REFERENCES BAN(MABAN)," +
+                "CONSTRAINT PK_KHACHHANG PRIMARY KEY(MAKHACHHANG))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS LOAITHUCUONG(" +
-                "MALOAI VARCHAR(15)," +
-                "TENLOAI NVARCHAR(30)," +
+                "MALOAI TEXT NOT NULL," +
+                "TENLOAI TEXT," +
                 "CONSTRAINT PK_LOAITHUCUONG Primary Key (MALOAI))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS NHANVIEN(" +
-                "MANHANVIEN VARCHAR(15)," +
-                "MACHUCVU VARCHAR(15)," +
-                "TENNHANVIEN NVARCHAR(50)," +
-                "GIOITINH NVARCHAR(4)," +
-                "DIACHI NVARCHAR(100)," +
-                "SDT VARCHAR(11)," +
-                "TAIKHOAN VARCHAR(30)," +
-                "MATKHAU VARCHAR(30)," +
+                "MANHANVIEN TEXT NOT NULL," +
+                "MACHUCVU TEXT," +
+                "TENNHANVIEN TEXT," +
+                "GIOITINH TEXT," +
+                "DIACHI TEXT," +
+                "SDT TEXT," +
+                "TAIKHOAN TEXT," +
+                "MATKHAU TEXT," +
                 "CONSTRAINT PK_NHANVIEN Primary Key (MANHANVIEN)," +
-                "CONSTRAINT FK_NHANVIEN_RELATIONS_CHUCVU Foreign Key (MACHUCVU) references CHUCVU (MACHUCVU))";
+                "CONSTRAINT FK_NHANVIEN_CHUCVU Foreign Key (MACHUCVU) references CHUCVU(MACHUCVU))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS NHANVIEN_CO_CALAM(" +
-                "MANHANVIEN VARCHAR(15)," +
-                "MACALAM VARCHAR(15)," +
-                "THOIGIANVAO DATETIME," +
-                "THOIGIANRA DATETIME," +
+                "MANHANVIEN TEXT NOT NULL," +
+                "MACALAM TEXT NOT NULL," +
+                "THOIGIANVAO NUMERIC," +
+                "THOIGIANRA NUMERIC," +
                 "CONSTRAINT PK_NHANVIEN_CO_CALAM Primary Key (MANHANVIEN, MACALAM)," +
                 "CONSTRAINT FK_NHANVIEN_NHANVIEN__CALAM Foreign Key (MACALAM) references CALAM (MACALAM)," +
                 "CONSTRAINT FK_NHANVIEN_NHANVIEN__NHANVIEN Foreign Key (MANHANVIEN) references NHANVIEN (MANHANVIEN))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS HOADON(" +
-                "MAHOADON VARCHAR(15)," +
-                "MANHANVIEN VARCHAR(15)," +
-                "TENHOADON NVARCHAR(20)," +
-                "NGAYXUAT DATE," +
-                "TRANGTHAI NVARCHAR(20)," +
-                "MABAN VARCHAR(15)," +
-                "GIOVAO TIME," +
-                "GIORA TIME," +
+                "MAHOADON TEXT NOT NULL," +
+                "MANHANVIEN TEXT," +
+                "TENHOADON TEXT," +
+                "NGAYXUAT NUMERIC," +
+                "TRANGTHAI TEXT," +
+                "MABAN TEXT," +
+                "GIOVAO NUMERIC," +
+                "GIORA NUMERIC," +
                 "CONSTRAINT PK_HOADON Primary Key (MAHOADON)," +
-                "CONSTRAINT FK_HOADON_RELATIONS_NHANVIEN Foreign Key (MANHANVIEN) references NHANVIEN (MANHANVIEN)," +
+                "CONSTRAINT FK_HOADON_NHANVIEN Foreign Key (MANHANVIEN) references NHANVIEN (MANHANVIEN)," +
                 "CONSTRAINT FK_HOADON_BAN FOREIGN KEY (MABAN) REFERENCES BAN(MABAN))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS THUCUONG(" +
-                "MANUOC VARCHAR(15)," +
-                "MALOAI VARCHAR(15)," +
-                "TENNUOC NVARCHAR(40)," +
-                "GIA FLOAT," +
-                "SIZE VARCHAR(2)," +
-                "TRANGTHAI VARCHAR(20)," +
+                "MANUOC TEXT NOT NULL," +
+                "MALOAI TEXT," +
+                "TENNUOC TEXT," +
+                "GIA REAL," +
+                "SIZE TEXT," +
+                "TRANGTHAI TEXT," +
                 "CONSTRAINT PK_THUCUONG Primary Key (MANUOC)," +
-                "CONSTRAINT FK_THUCUONG_RELATIONS_LOAITHUC Foreign Key (MALOAI) references LOAITHUCUONG (MALOAI))";
+                "CONSTRAINT FK_THUCUONG_LOAITHUC Foreign Key (MALOAI) references LOAITHUCUONG (MALOAI))";
         db.execSQL(sql);
         sql = "Create Table IF NOT EXISTS CT_HOADON(" +
-                "MANUOC VARCHAR(15)," +
-                "MAHOADON VARCHAR(15)," +
-                "TENNUOC NVARCHAR(30)," +
-                "SL INT," +
-                "DONGIA FLOAT," +
-                "THANHTIEN FLOAT," +
+                "MANUOC TEXT NOT NULL," +
+                "MAHOADON TEXT NOT NULL," +
+                "TENNUOC TEXT," +
+                "SL INTEGER," +
+                "DONGIA REAL," +
+                "THANHTIEN REAL," +
                 "CONSTRAINT PK_CT_HOADON Primary Key (MANUOC, MAHOADON)," +
                 "CONSTRAINT FK_CT_HOADO_CT_HOADON_THUCUONG Foreign Key (MANUOC) references THUCUONG (MANUOC)," +
                 "CONSTRAINT FK_CT_HOADO_CT_HOADON_HOADON Foreign Key (MAHOADON) references HOADON (MAHOADON))";
@@ -120,16 +122,28 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         super.onOpen(db);
     }
 
-    // lay tat ca ban ra
-    public List<BanDTO> getAll() {
-        List<BanDTO> list = new ArrayList<>();
+        // lay tat ca ban ra
+    public List<BanDTO> getBanKhuA() {
+        List<BanDTO> listA = new ArrayList<>();
+        SQLiteDatabase rdb = getReadableDatabase();
+        Cursor rs = rdb.query("BAN", null, null,  null, null,null, null);
+        while(rs != null && rs.moveToNext()) {
+            String maBan = rs.getString(0);
+            if(maBan.substring(0,1).equals("A"))
+                listA.add(new BanDTO(maBan, "Trống"));
+        }
+        return listA;
+    }
+    public List<BanDTO> getBanKhuB() {
+        List<BanDTO> listB = new ArrayList<>();
         SQLiteDatabase rdb = getReadableDatabase();
         Cursor rs = rdb.query("BAN", null, null, null, null,null, null);
         while(rs != null && rs.moveToNext()) {
             String maBan = rs.getString(0);
-            list.add(new BanDTO(maBan, "Trống"));
+            if(maBan.substring(0,1).equals("B"))
+                listB.add(new BanDTO(maBan, "Trống"));
         }
-        return list;
+        return listB;
     }
 
     // Them - Lenh insert tra ve long - delete, update tra ve int - query, rawQuery tra ve cursor
