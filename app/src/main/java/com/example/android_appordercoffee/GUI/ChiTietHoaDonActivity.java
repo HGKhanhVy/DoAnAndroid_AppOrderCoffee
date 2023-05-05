@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android_appordercoffee.BLL.ChiTietHoaDon_BLL;
 import com.example.android_appordercoffee.DAL.ChiTietHoaDon_Adapter;
 import com.example.android_appordercoffee.DAL.SQLiteHelper;
 import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
@@ -36,8 +37,8 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         txtNgayXuat = findViewById(R.id.txtNgayXuat);
 
         //khởi tạo data
-        ArrayList<CT_HoaDon_DTO> arrList = new ArrayList<CT_HoaDon_DTO>();
-        db = new SQLiteHelper(ChiTietHoaDonActivity.this);
+        //ArrayList<CT_HoaDon_DTO> arrList = new ArrayList<CT_HoaDon_DTO>();
+        //db = new SQLiteHelper(ChiTietHoaDonActivity.this);
         //String MaHoaDon , String MaSP, String TenSp, int SoLuong, float DonGia,float ThanhTien
         CT_HoaDon_DTO CTHD1 = new CT_HoaDon_DTO("HD001", "SP001", "Sữa Tươi", 1, 15000.0f, 15000.0f);
         CT_HoaDon_DTO CTHD2 = new CT_HoaDon_DTO("HD001", "SP002", "Cafe sữa", 1, 18000.0f, 18000.0f);
@@ -59,8 +60,8 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         db.add_CTHoaDon(CTHD23);
 
  */
-
-        ArrayList<CT_HoaDon_DTO> lstCTHoaDon = db.getListCTHDByHoaDon("HD001");
+        ChiTietHoaDon_BLL cthd = new ChiTietHoaDon_BLL(ChiTietHoaDonActivity.this);
+        ArrayList<CT_HoaDon_DTO> lstCTHoaDon = cthd.getAllChiTietHoaDon("HD002");
         float tong = 0;
         float tienkhachdua =100000.0f;
         Calendar calendar = Calendar.getInstance();
