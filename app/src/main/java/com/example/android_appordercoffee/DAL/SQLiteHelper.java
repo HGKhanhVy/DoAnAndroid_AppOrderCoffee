@@ -18,11 +18,9 @@ import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QL_QuanCafe.db";
     private static int DATABASE_VERSION = 1;
-<<<<<<< HEAD
+
     private Context mContext;
 
-=======
->>>>>>> 0f65379c6b5a888e5448e8f45e178ccedb004594
     public SQLiteHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

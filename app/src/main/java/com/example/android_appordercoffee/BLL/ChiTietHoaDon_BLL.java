@@ -16,5 +16,15 @@ public class ChiTietHoaDon_BLL {
     public ArrayList<CT_HoaDon_DTO> getAllChiTietHoaDon(String mahoadon){
         return db.getListCTHDByHoaDon(mahoadon);
     }
-
+    public long AddChiTietHoaDon(CT_HoaDon_DTO ctHoaDonDto){
+        return db.add_CTHoaDon(ctHoaDonDto);
+    }
+    public boolean KT_TonMaNuoc (String mahoadon , String mauoc){
+        for(CT_HoaDon_DTO items : db.getListCTHDByHoaDon(mahoadon)){
+            if(items.getMaNuoc().equalsIgnoreCase(mauoc) == true){
+                return false;
+            }
+        }
+        return true;
+    }
 }
