@@ -37,6 +37,8 @@ public class FragmentSoDoBan extends Fragment implements BanRecycleViewAdapter.B
         recyclerView = view.findViewById(R.id.recyclerView_SoDoBan);
         adapter = new BanRecycleViewAdapter();
         db = new SQLiteHelper(getContext());
+        BanDTO ban = new BanDTO("A6","Trống");
+        db.addBan(ban);
         List<BanDTO> listBan = db.getAll();
         adapter.setListBan(listBan);
         GridLayoutManager manager = new GridLayoutManager(getContext(), 2);

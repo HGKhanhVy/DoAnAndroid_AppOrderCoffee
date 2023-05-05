@@ -5,35 +5,34 @@
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/txtTenSP"
-        android:layout_width="wrap_content"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:text="Bò hút"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/txtDonGia"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="10.000"
         android:layout_toRightOf="@id/txtTenSP"
-        android:textSize="20dp"
-        android:layout_marginLeft="30dp"
+        android:textSize="15dp"
          />
     <TextView
         android:id="@+id/txtSL"
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="1"
         android:layout_toRightOf="@id/txtDonGia"
-        android:textSize="20dp"
-        android:layout_marginLeft="60dp"/>
+        android:textSize="15dp"
+        />
     <TextView
         android:id="@+id/txtThanhTien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10.000"
         android:layout_toRightOf="@id/txtSL"
-        android:textSize="20dp"
-        android:layout_marginLeft="60dp" />
+        android:textSize="15dp"
+        />
 </RelativeLayout>

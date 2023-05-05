@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.android_appordercoffee.DTO.BanDTO;
+import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,6 @@ import java.util.List;
 public class SQLiteHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "QL_QuanCafe";
     private static int DATABASE_VERSION = 1;
-
     public SQLiteHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -109,7 +109,35 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "CONSTRAINT FK_CT_HOADO_CT_HOADON_HOADON Foreign Key (MAHOADON) references HOADON (MAHOADON))";
         db.execSQL(sql);
     }
-
+    public ArrayList<CT_HoaDon_DTO> getListCTHDByHoaDon(String MaHoaDon ){
+        ArrayList<CT_HoaDon_DTO> list = new ArrayList<>();
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM CT_HOADON WHERE MAHOADON ='"+MaHoaDon+"'";
+        //Cursor rs = rdb.query("CT_HOADON", null, null, null, null,null, null);
+        Cursor rs = rdb.rawQuery(query,null);
+        while(rs != null && rs.moveToNext()) {
+            String maNuoc = rs.getString(0).toString();
+            String maHoaDon =rs.getString(1).toString();
+            String tenNuoc =rs.getString(2).toString();
+            int sl =Integer.parseInt(rs.getString(3).toString());
+            float donGia =Float.valueOf(rs.getString(4).toString());
+            float thanhTien = Float.valueOf(rs.getString(5).toString());
+            CT_HoaDon_DTO cthd = new CT_HoaDon_DTO(maHoaDon,maNuoc,tenNuoc,sl,donGia,thanhTien);
+            list.add(cthd);
+        }
+        return list;
+    }
+    public long add_CTHoaDon(CT_HoaDon_DTO cthd) {
+        ContentValues values = new ContentValues();
+        values.put("MANUOC", cthd.getMaNuoc());
+        values.put("MAHOADON", cthd.getMaHoaDon());
+        values.put("TENNUOC", cthd.getTenNuoc());
+        values.put("SL", cthd.getSoLuong());
+        values.put("DONGIA", cthd.getDonGia());
+        values.put("THANHTIEN", cthd.getThanhTien());
+        SQLiteDatabase databse = getWritableDatabase();
+        return databse.insert("CT_HOADON", null, values);
+    }
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
 
