@@ -2,19 +2,19 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="#FAF7F0">
+    android:backgroundTint="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:orientation="vertical"
-        android:background="#FAF7F0">
+        android:background="@color/white">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="#FAF7F0">
+            android:background="@color/white">
             <ImageView
                 android:id="@+id/img_ghe1"
                 android:layout_width="30dp"
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="#FAF7F0">
+            android:background="@color/white">
             <ImageView
                 android:id="@+id/img_ghe3"
                 android:layout_width="15dp"
@@ -62,7 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:background="#FAF7F0">
+            android:background="@color/white">
             <ImageView
                 android:id="@+id/img_ghe5"
                 android:layout_width="30dp"

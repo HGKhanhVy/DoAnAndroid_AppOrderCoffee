@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/search"
+        android:icon="@drawable/baseline_search_24"
+        app:showAsAction="always"
+        android:title="Search" />
+    <item android:id="@+id/order"
+        android:title="Order"
+        android:icon="@drawable/baseline_edit_note_24" />
+    <item android:id="@+id/tamTinh"
+        android:title="Tạm tính"
+        android:icon="@drawable/baseline_receipt_24" />
+    <item android:id="@+id/tienIch"
+        android:title="Tiện ích"
+        android:icon="@drawable/baseline_menu_24" />
+</menu>
