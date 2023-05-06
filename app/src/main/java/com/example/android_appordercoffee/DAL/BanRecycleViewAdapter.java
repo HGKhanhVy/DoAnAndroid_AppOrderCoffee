@@ -17,16 +17,16 @@ import java.util.List;
 
 public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAdapter.SoDoBanViewHolder>{
     private List<BanDTO> listBan;
-    private BanListener banListener;
+    //private BanListener banListener;
     public BanRecycleViewAdapter() {
         listBan = new ArrayList<>();
     }
 
-    public void setBanListener(BanListener banListener) {
-        this.banListener = banListener;
-    }
+    //public void setBanListener(BanListener banListener) {
+    //    this.banListener = banListener;
+    //}
 
-    public void setListBan(List<BanDTO> listBan) {
+    public void setListBan(List<BanDTO> listBan) { // lay du lieu vao list
         this.listBan = listBan;
         notifyDataSetChanged(); // set lai list khi co su thay doi
     }
@@ -39,6 +39,7 @@ public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAd
     @NonNull
     @Override
     public SoDoBanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Set layout dung chung
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_table_layout, parent, false);
         return new SoDoBanViewHolder(view);
     }
@@ -54,7 +55,7 @@ public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAd
         return listBan.size();
     }
 
-    public class SoDoBanViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class SoDoBanViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
         private ImageView imgGhe1, imgGhe2, imgGhe3, imgGhe4, imgGhe5, imgGhe6;
         Button btnBan;
         public SoDoBanViewHolder(@NonNull View view) {
@@ -66,16 +67,16 @@ public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAd
             imgGhe5 = view.findViewById(R.id.img_ghe5);
             imgGhe6 = view.findViewById(R.id.img_ghe6);
             btnBan = view.findViewById(R.id.btnBan);
-            view.setOnClickListener(this);
+            //view.setOnClickListener(this);
         }
 
-        @Override
+        /*@Override
         public void onClick(View view) {
             if (banListener != null)
                 banListener.onBanClick(view, getAdapterPosition());
-        }
+        }*/
     }
-    public interface BanListener {
+    /*public interface BanListener {
         void onBanClick(View view, int position);
-    }
+    }*/
 }

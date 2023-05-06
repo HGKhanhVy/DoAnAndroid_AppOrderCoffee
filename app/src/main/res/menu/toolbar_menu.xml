@@ -11,6 +11,9 @@
     <item android:id="@+id/tamTinh"
         android:title="Tạm tính"
         android:icon="@drawable/baseline_receipt_24" />
+    <item android:id="@+id/Ct_HD"
+        android:title="Chi tiết hóa đơn"
+        android:icon="@drawable/baseline_receipt_24" />
     <item android:id="@+id/tienIch"
         android:title="Tiện ích"
         android:icon="@drawable/baseline_menu_24" />

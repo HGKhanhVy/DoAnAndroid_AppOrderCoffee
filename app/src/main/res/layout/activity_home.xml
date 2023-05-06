@@ -2,16 +2,71 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GUI.HomeActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout_sodoban" />
+    <LinearLayout
+        android:id="@+id/trangThaiBan"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        app:title="Sơ đồ bàn"
-        android:background="#FF87A1FF"
-        app:titleMarginStart="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:elevation="100dp"
+        android:layout_below="@+id/toolbar_layout">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="#FF87A1FF"
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Trống"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="#D3DEDC"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đang phục vụ"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="#FEBE8C"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đã đặt"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"/>
+        </LinearLayout>
+    </LinearLayout>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/ViewPager"
         android:layout_width="match_parent"
@@ -26,4 +81,16 @@
         app:itemTextColor="@color/navigation"
         app:itemIconTint="@color/navigation"
         app:menu="@menu/navigation_menu"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="20dp"
+        android:text="Tiện ích"
+        android:src="@drawable/baseline_add_24"
+        android:backgroundTint="#FF87A1FF"
+        android:contentDescription="Them ban"/>
 </RelativeLayout>

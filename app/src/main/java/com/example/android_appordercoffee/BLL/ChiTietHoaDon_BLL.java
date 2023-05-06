@@ -8,7 +8,6 @@ import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
 import java.util.ArrayList;
 
 public class ChiTietHoaDon_BLL {
-    private Context context;
     SQLiteHelper db ;
     public ChiTietHoaDon_BLL(Context context1){
         db = new SQLiteHelper(context1);

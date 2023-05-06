@@ -24,7 +24,7 @@
             android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ACCOUNT INFO, "
+            android:text="THÔNG TIN, "
             android:textSize="40sp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -34,7 +34,7 @@
             android:id="@+id/letgo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Provide personal information!"
+            android:text="Cung cấp thông tin cá nhân!"
             android:textColor="#434242"
             android:textSize="20sp"
             android:layout_marginStart="20dp"/>
@@ -43,10 +43,10 @@
             android:id="@+id/textInputLayout_Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:hint="Full Name"
+            android:hint="Họ tên"
             app:startIconDrawable="@drawable/baseline_info_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:hint="Date of Birth"
+            android:hint="Ngày sinh"
             app:startIconDrawable="@drawable/baseline_calendar_month_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:hint="Phone Number"
+            android:hint="Số điện thoại"
             app:startIconDrawable="@drawable/baseline_phone_24"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +106,24 @@
                 android:id="@+id/textInputEditText_Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="phone"/>
+                android:inputType="textEmailAddress"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout_DiaChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:hint="Địa chỉ"
+            app:startIconDrawable="@drawable/baseline_add_location_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditText_DiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"/>
         </com.google.android.material.textfield.TextInputLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -120,26 +137,28 @@
                 android:orientation="horizontal"
                 android:layout_marginStart="30dp">
                 <RadioButton
+                    android:id="@+id/rad_Nam"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="Female"
+                    android:text="Nam"
                     android:textColor="@color/black"
                     android:textSize="20sp"/>
                 <RadioButton
+                    android:id="@+id/rad_Nu"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:text="Male"
+                    android:text="Nữ"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"
                     android:textSize="20sp"/>
             </RadioGroup>
         </LinearLayout>
         <Button
-            android:id="@+id/btn_Submit"
+            android:id="@+id/btn_DK"
             android:layout_below="@+id/layout_info"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Đăng ký"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/black"

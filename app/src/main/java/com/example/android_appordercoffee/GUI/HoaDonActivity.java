@@ -48,7 +48,6 @@ public class HoaDonActivity extends AppCompatActivity {
         HoaDon_DTO HD8 = new HoaDon_DTO("HD018", "B002", "chua thanh toan", null, null, null, null, null);
         HoaDon_DTO HD9 = new HoaDon_DTO("HD019", "B001", "thanh toan", null, null, null, null, null);
 
-        /*
         hd.AddHoaDon(HD1);
         hd.AddHoaDon(HD2);
         hd.AddHoaDon(HD3);
@@ -58,7 +57,7 @@ public class HoaDonActivity extends AppCompatActivity {
         hd.AddHoaDon(HD7);
         hd.AddHoaDon(HD8);
         hd.AddHoaDon(HD9);
-        */
+
 
 
         ArrayList<HoaDon_DTO> lstHoaDon = hd.getALLHoaDon("thanh toan");

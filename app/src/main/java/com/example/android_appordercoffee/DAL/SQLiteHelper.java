@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import com.example.android_appordercoffee.DTO.BanDTO;
 import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
+import com.example.android_appordercoffee.DTO.NhanVienDTO;
 import com.example.android_appordercoffee.DTO.HoaDon_DTO;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
@@ -62,7 +63,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "MANHANVIEN TEXT NOT NULL," +
                 "MACHUCVU TEXT," +
                 "TENNHANVIEN TEXT," +
+                "NGSINH TEXT," +
                 "GIOITINH TEXT," +
+                "EMAIL TEXT," +
                 "DIACHI TEXT," +
                 "SDT TEXT," +
                 "TAIKHOAN TEXT," +
@@ -114,6 +117,24 @@ public class SQLiteHelper extends SQLiteOpenHelper {
                 "CONSTRAINT FK_CT_HOADO_CT_HOADON_HOADON Foreign Key (MAHOADON) references HOADON (MAHOADON))";
         db.execSQL(sql);
     }
+    public ArrayList<CT_HoaDon_DTO> getListCTHDByHoaDon(String MaHoaDon ){
+        ArrayList<CT_HoaDon_DTO> list = new ArrayList<>();
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM CT_HOADON WHERE MAHOADON ='"+MaHoaDon+"'";
+        //Cursor rs = rdb.query("CT_HOADON", null, null, null, null,null, null);
+        Cursor rs = rdb.rawQuery(query,null);
+        while(rs != null && rs.moveToNext()) {
+            String maNuoc = rs.getString(0).toString();
+            String maHoaDon =rs.getString(1).toString();
+            String tenNuoc =rs.getString(2).toString();
+            int sl =Integer.parseInt(rs.getString(3).toString());
+            float donGia =Float.valueOf(rs.getString(4).toString());
+            float thanhTien = Float.valueOf(rs.getString(5).toString());
+            CT_HoaDon_DTO cthd = new CT_HoaDon_DTO(maHoaDon,maNuoc,tenNuoc,sl,donGia,thanhTien);
+            list.add(cthd);
+        }
+        return list;
+    }
     public ArrayList<HoaDon_DTO> getListHDByHoaDon(String trangthai_ )
     {
         ArrayList<HoaDon_DTO> list = new ArrayList<>();
@@ -130,24 +151,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
             HoaDon_DTO hd = new HoaDon_DTO(maban,mahoadon,trangthai, null, null, null, null, null);
             list.add(hd);
-        }
-        return list;
-    }
-    public ArrayList<CT_HoaDon_DTO> getListCTHDByHoaDon(String MaHoaDon ){
-        ArrayList<CT_HoaDon_DTO> list = new ArrayList<>();
-        SQLiteDatabase rdb = getReadableDatabase();
-        String query= "SELECT * FROM CT_HOADON WHERE MAHOADON ='"+MaHoaDon+"'";
-        //Cursor rs = rdb.query("CT_HOADON", null, null, null, null,null, null);
-        Cursor rs = rdb.rawQuery(query,null);
-        while(rs != null && rs.moveToNext()) {
-            String maNuoc = rs.getString(0).toString();
-            String maHoaDon =rs.getString(1).toString();
-            String tenNuoc =rs.getString(2).toString();
-            int sl =Integer.parseInt(rs.getString(3).toString());
-            float donGia =Float.valueOf(rs.getString(4).toString());
-            float thanhTien = Float.valueOf(rs.getString(5).toString());
-            CT_HoaDon_DTO cthd = new CT_HoaDon_DTO(maHoaDon,maNuoc,tenNuoc,sl,donGia,thanhTien);
-            list.add(cthd);
         }
         return list;
     }
@@ -196,9 +199,9 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         super.onOpen(db);
     }
 
-        // lay tat ca ban ra
-    public List<BanDTO> getBanKhuA() {
-        List<BanDTO> listA = new ArrayList<>();
+    // lay tat ca ban ra
+    public ArrayList<BanDTO> getListBanKhuA() {
+        ArrayList<BanDTO> listA = new ArrayList<>();
         SQLiteDatabase rdb = getReadableDatabase();
         Cursor rs = rdb.query("BAN", null, null,  null, null,null, null);
         while(rs != null && rs.moveToNext()) {
@@ -208,8 +211,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
         return listA;
     }
-    public List<BanDTO> getBanKhuB() {
-        List<BanDTO> listB = new ArrayList<>();
+    public ArrayList<BanDTO> getListBanKhuB() {
+        ArrayList<BanDTO> listB = new ArrayList<>();
         SQLiteDatabase rdb = getReadableDatabase();
         Cursor rs = rdb.query("BAN", null, null, null, null,null, null);
         while(rs != null && rs.moveToNext()) {
@@ -228,5 +231,28 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         values.put("TRANGTHAI", ban.getTrangThai());
         SQLiteDatabase db = getWritableDatabase();
         return db.insert("BAN", null, values);
+    }
+    public long addNhanVien(NhanVienDTO nv) {
+        ContentValues values = new ContentValues();
+        values.put("MANHANVIEN", nv.getMaNV());
+        values.put("MACHUCVU", nv.getMaCV());
+        values.put("TENNHANVIEN", nv.getHoTen());
+        values.put("NGSINH", nv.getNgSinh());
+        values.put("GIOITINH", nv.getGioiTinh());
+        values.put("EMAIL", nv.getEmail());
+        values.put("DIACHI", nv.getDiaChi());
+        values.put("SDT", nv.getSdt());
+        values.put("TAIKHOAN", nv.getUser());
+        values.put("MATKHAU", nv.getPass());
+        SQLiteDatabase db = getWritableDatabase();
+        return db.insert("NHANVIEN", null, values);
+    }
+    public Boolean checkDN(String tk, String mk) {
+        String sql = "Select * From NHANVIEN Where TAIKHOAN = '"+tk+"' AND MATKHAU = '"+mk+"' ";
+        SQLiteDatabase rdb = getReadableDatabase();
+        Cursor rs = rdb.rawQuery(sql, null);
+        if(rs.getCount() != 0)
+            return true;
+        return false;
     }
 }

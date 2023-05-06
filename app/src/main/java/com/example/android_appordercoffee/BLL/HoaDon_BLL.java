@@ -15,8 +15,6 @@ public class HoaDon_BLL {
 
     public HoaDon_BLL(Context context1){db = new SQLiteHelper(context1);}
     public ArrayList<HoaDon_DTO> getALLHoaDon(String trangthai){return db.getListHDByHoaDon(trangthai);}
-
-
     public long AddHoaDon(HoaDon_DTO hoaDon_dtoDto){
         return db.add_HoaDon(hoaDon_dtoDto);
     }

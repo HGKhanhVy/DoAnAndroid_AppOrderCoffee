@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GUI.AddBanActivity"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/toolbar_layout"
+        layout="@layout/toolbar_layout_themban" />
+    <EditText
+        android:id="@+id/maBan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập mã bàn"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+    <EditText
+        android:id="@+id/trThai"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Trạng thái bàn"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+    <Button
+        android:id="@+id/btnThemBan"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="20dp"
+        android:text="Thêm bàn"
+        android:background="@drawable/border_button"/>
+</LinearLayout>

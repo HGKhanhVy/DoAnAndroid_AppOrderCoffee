@@ -32,7 +32,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         txtBan = findViewById(R.id.txtBan);
         txtTongThanhToan = findViewById(R.id.txtTongThanhToan);
         txtTienKhachDua = findViewById(R.id.txtTienKhachDua);
-        txtBan.setText("Bàn 00001");
+        txtBan.setText("Bàn A1");
         txtTraLai = findViewById(R.id.txtTienTraLai);
         txtNgayXuat = findViewById(R.id.txtNgayXuat);
 
@@ -46,7 +46,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         CT_HoaDon_DTO CTHD23 = new CT_HoaDon_DTO("HD002", "SP006", "Bò cụng", 1, 12000.0f, 12000.0f);
 
         ChiTietHoaDon_BLL cthd = new ChiTietHoaDon_BLL(ChiTietHoaDonActivity.this);
-/*
+
         cthd.AddChiTietHoaDon(CTHD1);
         cthd.AddChiTietHoaDon(CTHD2);
         cthd.AddChiTietHoaDon(CTHD3);
@@ -54,7 +54,7 @@ public class ChiTietHoaDonActivity extends AppCompatActivity {
         cthd.AddChiTietHoaDon(CTHD22);
         cthd.AddChiTietHoaDon(CTHD23);
 
- */
+
 
 
         ArrayList<CT_HoaDon_DTO> lstCTHoaDon = cthd.getAllChiTietHoaDon("HD002");

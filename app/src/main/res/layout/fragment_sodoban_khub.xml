@@ -9,64 +9,8 @@
         android:layout_height="match_parent"
         android:background="@drawable/layout_background"
         android:orientation="vertical"
-        android:elevation="100dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#FFFFFF"
-            android:elevation="100dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="#FF87A1FF"
-                    android:layout_marginStart="10dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Trống"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="#D3DEDC"
-                    android:layout_marginStart="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Đang phục vụ"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="#FEBE8C"
-                    android:layout_marginStart="20dp"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Đã đặt"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
-                    android:layout_marginStart="10dp"/>
-            </LinearLayout>
-        </LinearLayout>
+        android:elevation="100dp"
+        android:layout_marginTop="110dp">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView_SoDoBanKhuB"
             android:layout_width="match_parent"
