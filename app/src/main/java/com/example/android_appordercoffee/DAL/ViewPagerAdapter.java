@@ -24,7 +24,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         return null;
     }
-
     @Override
     public int getCount() {
         return 2; // Co 2 fragment

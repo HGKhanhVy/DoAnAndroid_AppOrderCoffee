@@ -53,14 +53,15 @@ public class FragmentSoDoBan_KhuA extends Fragment {//implements BanRecycleViewA
         recyclerView.setAdapter(adapter);
         //adapter.setBanListener(this);
     }
-
-    /*@Override
+/*
+    @Override
     public void onBanClick(View view, int position) {
         BanDTO ban = adapter.getBan(position);
         Intent intent = new Intent(getActivity(), UpdateDeleteBanActivity.class);
         intent.putExtra("MaBan", ban);
         startActivity(intent);
-    }*/
+    }
+ */
 
     @Override
     public void onResume() { // cho moi lan add la phai lam tuoi lai intent

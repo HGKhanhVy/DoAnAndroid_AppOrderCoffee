@@ -23,4 +23,7 @@ public class BanBLL {
     public long addBan(BanDTO ban) {
         return db.addBan(ban);
     }
+    public int ghepBan(String TenHoaDon, String mahoadon){
+        return db.ghepBan(TenHoaDon,mahoadon);
+    }
 }

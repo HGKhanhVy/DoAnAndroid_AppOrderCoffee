@@ -159,16 +159,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         values.put("MABAN", hd.getMaban());
         values.put("MAHOADON", hd.getMahd());
         values.put("TRANGTHAI", hd.getTrangthai());
-
-      /*  "MAHOADON TEXT NOT NULL," +
-                "MANHANVIEN TEXT," +
-                "TENHOADON TEXT," +
-                "NGAYXUAT NUMERIC," +
-                "TRANGTHAI TEXT," +
-                "MABAN TEXT," +
-                "GIOVAO NUMERIC," +
-                "GIORA NUMERIC," + */
-
         values.put("MANHANVIEN", hd.getManv());
         values.put("TENHOADON", hd.getTenhd());
         values.put("NGAYXUAT", hd.getNgayxuat());
@@ -226,6 +216,8 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     // Them - Lenh insert tra ve long - delete, update tra ve int - query, rawQuery tra ve cursor
     // execSQL void
     public long addBan(BanDTO ban) {
+        String trangthai = ban.getTrangThai();
+
         ContentValues values = new ContentValues();
         values.put("MABAN", ban.getMaBan());
         values.put("TRANGTHAI", ban.getTrangThai());
@@ -248,11 +240,100 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return db.insert("NHANVIEN", null, values);
     }
     public Boolean checkDN(String tk, String mk) {
-        String sql = "Select * From NHANVIEN Where TAIKHOAN = '"+tk+"' AND MATKHAU = '"+mk+"' ";
+        String sql = "Select * From NHANVIEN Where TAIKHOAN = '" + tk + "' AND MATKHAU = '" + mk + "' ";
         SQLiteDatabase rdb = getReadableDatabase();
         Cursor rs = rdb.rawQuery(sql, null);
-        if(rs.getCount() != 0)
+        if (rs.getCount() != 0)
             return true;
         return false;
+    }
+    public int capNhatSLThucUong(CT_HoaDon_DTO cthd){
+        ContentValues values = new ContentValues();
+        values.put("MANUOC", cthd.getMaNuoc());
+        values.put("MAHOADON", cthd.getMaHoaDon());
+        values.put("TENNUOC", cthd.getTenNuoc());
+        values.put("SL", cthd.getSoLuong());
+        values.put("DONGIA", cthd.getDonGia());
+        values.put("THANHTIEN", cthd.getThanhTien());
+        SQLiteDatabase db = this.getWritableDatabase();
+        //String queryWhere ="MANUOC = "+cthd.getMaNuoc()+" AND MAHOADON = "+cthd.getMaHoaDon()+"";
+        //db.update("CT_HOADON", values, "MANUOC = "+cthd.getMaNuoc()+" AND MAHOADON = "+cthd.getMaHoaDon()+"", new String[] { "1" });
+        int kq =db.update("CT_HOADON", values, "MANUOC = ? AND MAHOADON = ?", new String[] { cthd.getMaNuoc(), cthd.getMaHoaDon() });
+        return kq;
+    }
+    public int DeleteCTHoaDon (String masp, String maHoaDon){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int kq = db.delete("CT_HOADON","MANUOC=? AND MAHOADON=?",new String[]{masp, maHoaDon});
+        return kq;
+    }
+    public int ghepBan(String TenHoaDon, String mahoadon){
+        /*
+                "MAHOADON TEXT NOT NULL," +
+                "MANHANVIEN TEXT," +
+                "TENHOADON TEXT," +
+                "NGAYXUAT NUMERIC," +
+                "TRANGTHAI TEXT," +
+                "MABAN TEXT," +
+                "GIOVAO NUMERIC," +
+                "GIORA NUMERIC," +
+        */
+        ContentValues values = new ContentValues();
+        values.put("TENHOADON", TenHoaDon);
+        SQLiteDatabase db = this.getWritableDatabase();
+         int kq =db.update("HOADON", values, "MAHOADON = ?", new String[] { mahoadon });
+        return kq;
+    }
+    public float getThanhTienCTHoaDon(String maHoaDon){
+       float sum =0;
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM CT_HOADON WHERE MAHOADON ='"+maHoaDon+"'";
+        Cursor rs = rdb.rawQuery(query,null);
+        while(rs != null && rs.moveToNext()) {
+            float thanhTien = Float.valueOf(rs.getString(5).toString());
+            sum+= thanhTien;
+        }
+        return sum;
+    }
+    public String getMaHoaDonByMaBan (String MaBan){
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM HOADON WHERE MABAN ='"+MaBan+"'";
+        Cursor rs = rdb.rawQuery(query,null);
+        String MaHoaDon="";
+        while(rs != null && rs.moveToNext()) {
+            MaHoaDon =rs.getString(0).toString();
+        }
+        return MaHoaDon;
+    }
+     public int deleteAllCTHaDonByMaHoaDon( String maHoaDon){
+         SQLiteDatabase db = this.getWritableDatabase();
+         int kq = db.delete("CT_HOADON","MAHOADON=?",new String[]{maHoaDon});
+         return kq;
+     }
+     public int ThanhToanHoaDon(String maHD ){
+         ContentValues values = new ContentValues();
+         values.put("TRANGTHAI", "Da Thanh Toan");
+         SQLiteDatabase db = this.getWritableDatabase();
+         int kq =db.update("HOADON", values, "MAHOADON = ?", new String[] { maHD });
+         return kq;
+     }
+    public HoaDon_DTO getHoaDonByMaHoaDon(String mahoa){
+        /*
+                "MAHOADON TEXT NOT NULL," +
+                "MANHANVIEN TEXT," +
+                "TENHOADON TEXT," +
+                "NGAYXUAT NUMERIC," +
+                "TRANGTHAI TEXT," +
+                "MABAN TEXT," +
+                "GIOVAO NUMERIC," +
+                "GIORA NUMERIC," +
+         */
+        SQLiteDatabase rdb = getReadableDatabase();
+        String query= "SELECT * FROM HOADON WHERE MAHOADON ='"+mahoa+"'";
+        Cursor rs = rdb.rawQuery(query,null);
+        HoaDon_DTO hd=null;
+        while(rs != null && rs.moveToNext()) {
+             hd = new HoaDon_DTO(rs.getString(0), rs.getString(5) , rs.getString(4), rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(7),rs.getString(6));
+        }
+        return hd;
     }
 }

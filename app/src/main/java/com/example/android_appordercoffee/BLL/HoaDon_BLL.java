@@ -18,4 +18,9 @@ public class HoaDon_BLL {
     public long AddHoaDon(HoaDon_DTO hoaDon_dtoDto){
         return db.add_HoaDon(hoaDon_dtoDto);
     }
+    public String getMaHoaDonByMaBan (String MaBan){return db.getMaHoaDonByMaBan(MaBan);}
+    public int ThanhToanHoaDon(String maHD){ return  db.ThanhToanHoaDon( maHD );    }
+    public HoaDon_DTO getHoaDonByMaHoaDon (String mahoa){
+        return db.getHoaDonByMaHoaDon(mahoa);
+    }
 }

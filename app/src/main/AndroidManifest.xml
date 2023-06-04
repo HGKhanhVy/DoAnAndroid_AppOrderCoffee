@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,10 +14,13 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".GUI.Hien_thi_ban"
+            android:exported="false" />
+        <activity
             android:name=".GUI.AddBanActivity"
             android:exported="false" />
         <activity
-            android:name=".GUI.ChiTietHoaDonActivity"
+            android:name=".GUI.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".GUI.WelcomeActivity"
@@ -24,7 +29,7 @@
             android:name=".GUI.RegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".GUI.HomeActivity"
+            android:name=".GUI.ChiTietHoaDonActivity"
             android:exported="true" />
         <activity
             android:name=".GUI.InfoActivity"
@@ -32,21 +37,17 @@
         <activity
             android:name=".GUI.MainActivity"
             android:exported="true" />
-
         <activity
             android:name=".GUI.HoaDonActivity"
-            android:exported="true"/>
-
+            android:exported="true" />
         <activity
-            android:name=".GUI.LoginActivity"
+            android:name=".GUI.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

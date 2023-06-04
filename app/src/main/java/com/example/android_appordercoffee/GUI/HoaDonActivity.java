@@ -1,27 +1,20 @@
 package com.example.android_appordercoffee.GUI;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_appordercoffee.BLL.HoaDon_BLL;
-import com.example.android_appordercoffee.DAL.ChiTietHoaDon_Adapter;
 import com.example.android_appordercoffee.DAL.HoaDon_Adapter;
 import com.example.android_appordercoffee.DAL.SQLiteHelper;
-import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
 import com.example.android_appordercoffee.DTO.HoaDon_DTO;
 import com.example.android_appordercoffee.R;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class HoaDonActivity extends AppCompatActivity {
 
@@ -35,7 +28,6 @@ public class HoaDonActivity extends AppCompatActivity {
     public void goiList() // da thanh toan
     {
         HoaDon_BLL hd = new HoaDon_BLL(HoaDonActivity.this);
-
 
         // khởi tạo data
         HoaDon_DTO HD1 = new HoaDon_DTO("HD011", "B001", "thanh toan", null, null, null, null, null);
@@ -58,12 +50,9 @@ public class HoaDonActivity extends AppCompatActivity {
         hd.AddHoaDon(HD8);
         hd.AddHoaDon(HD9);
 
-
-
         ArrayList<HoaDon_DTO> lstHoaDon = hd.getALLHoaDon("thanh toan");
         HoaDon_Adapter perAdapter = new HoaDon_Adapter(this, lstHoaDon);
         listView.setAdapter(perAdapter);
-
 
     }
 

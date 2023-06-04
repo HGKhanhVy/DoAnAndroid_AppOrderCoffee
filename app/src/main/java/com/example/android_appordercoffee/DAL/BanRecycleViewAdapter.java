@@ -33,9 +33,7 @@ public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAd
 
     public BanDTO getBan(int position) {
         return listBan.get(position);
-
     }
-
     @NonNull
     @Override
     public SoDoBanViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,7 +53,7 @@ public class BanRecycleViewAdapter extends RecyclerView.Adapter<BanRecycleViewAd
         return listBan.size();
     }
 
-    public class SoDoBanViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
+    public static class SoDoBanViewHolder extends RecyclerView.ViewHolder { //implements View.OnClickListener{
         private ImageView imgGhe1, imgGhe2, imgGhe3, imgGhe4, imgGhe5, imgGhe6;
         Button btnBan;
         public SoDoBanViewHolder(@NonNull View view) {

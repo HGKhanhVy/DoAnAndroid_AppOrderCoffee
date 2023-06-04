@@ -3,36 +3,95 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/txtTenSP"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:text="Bò hút"
-        android:textSize="15dp"
-        android:layout_marginLeft="10dp"
+        android:text="Bò húc"
+        android:textSize="20dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="2dp"
         />
-    <TextView
-        android:id="@+id/txtDonGia"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="10.000"
-        android:layout_toRightOf="@id/txtTenSP"
-        android:textSize="15dp"
-         />
-    <TextView
-        android:id="@+id/txtSL"
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:layout_toRightOf="@id/txtDonGia"
-        android:textSize="15dp"
-        />
-    <TextView
-        android:id="@+id/txtThanhTien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="10.000"
-        android:layout_toRightOf="@id/txtSL"
-        android:textSize="15dp"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#337ab7"
+                android:layout_marginLeft="1dp"
+                android:padding="4dp"
+                >
+                <TextView
+                    android:id="@+id/txtDonGia"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffffff"
+                    android:text="10.000"
+                    android:layout_toRightOf="@id/txtTenSP"
+                    android:textSize="15dp"
+                    />
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="X"
+                    android:layout_toRightOf="@id/txtDonGia"
+                    android:textSize="15dp"
+                    android:textColor="#ffffff"
+                    />
+                <TextView
+                    android:id="@+id/txtSL"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:layout_toRightOf="@id/txtDonGia"
+                    android:textSize="15dp"
+                    android:textColor="#ffffff"
+                    android:contentDescription="Số lượng sản phẩm"
+                    />
+                <TextView
+                    android:id="@+id/txtbang"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="="
+                    android:layout_toRightOf="@id/txtDonGia"
+                    android:textSize="15dp"
+                    android:textColor="#ffffff"
+                    android:contentDescription="Hien Thi ket qua"
+                    />
+                <TextView
+                    android:id="@+id/txtThanhTien"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:text="10.000"
+                    android:textColor="#ffffff"
+                    android:layout_toRightOf="@id/txtSL"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnThem"
+                android:layout_width="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_height="30dp"
+                android:textSize="10dp"
+                android:layout_toRightOf="@id/txtThanhTien"
+                android:text="+" />
+            <Button
+                android:id="@+id/btnXoa"
+                android:layout_width="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="30dp"
+                android:textSize="10dp"
+                android:layout_toRightOf="@id/btnThem"
+                android:text="-"/>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
