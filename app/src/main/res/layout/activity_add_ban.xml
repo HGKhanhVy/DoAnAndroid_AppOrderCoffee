@@ -19,6 +19,15 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp" />
     <EditText
+        android:id="@+id/tenBan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Nhập tên bàn"
+        android:layout_below="@+id/toolbar_layout"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp" />
+    <EditText
         android:id="@+id/trThai"
         android:layout_width="match_parent"
         android:layout_height="50dp"

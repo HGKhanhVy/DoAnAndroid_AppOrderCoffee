@@ -1,38 +1,30 @@
 package com.example.android_appordercoffee.DTO;
 
-public class NhanVienDTO {
-    String maNV, maCV, hoTen, ngSinh, gioiTinh, sdt, email, diaChi, user, pass;
+import java.io.Serializable;
+
+public class NhanVienDTO implements Serializable {
+    String maNV, maCV, tenNV, gioiTinh, diaChi, sdt, taiKhoan, matKhau;
 
     public NhanVienDTO() {
     }
 
-    public NhanVienDTO(String maNV, String maCV, String hoTen, String ngSinh, String gioiTinh, String sdt, String email, String diaChi, String user, String pass) {
+    public NhanVienDTO(String maNV, String maCV, String tenNV, String gioiTinh, String diaChi, String sdt, String taiKhoan, String matKhau) {
         this.maNV = maNV;
         this.maCV = maCV;
-        this.hoTen = hoTen;
-        this.ngSinh = ngSinh;
+        this.tenNV = tenNV;
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
-        this.email = email;
         this.diaChi = diaChi;
-        this.user = user;
-        this.pass = pass;
+        this.taiKhoan = taiKhoan;
+        this.matKhau = taiKhoan;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getTenNV() {
+        return tenNV;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
-    }
-
-    public String getNgSinh() {
-        return ngSinh;
-    }
-
-    public void setNgSinh(String ngSinh) {
-        this.ngSinh = ngSinh;
+    public void setTenNV(String tenNV) {
+        this.tenNV = tenNV;
     }
 
     public String getGioiTinh() {
@@ -51,14 +43,6 @@ public class NhanVienDTO {
         this.sdt = sdt;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getDiaChi() {
         return diaChi;
     }
@@ -67,20 +51,20 @@ public class NhanVienDTO {
         this.diaChi = diaChi;
     }
 
-    public String getUser() {
-        return user;
+    public String getTaiKhoan() {
+        return taiKhoan;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setTaiKhoan(String taiKhoan) {
+        this.taiKhoan = taiKhoan;
     }
 
-    public String getPass() {
-        return pass;
+    public String getMatKhau() {
+        return matKhau;
     }
 
-    public void setPass(String pass) {
-        this.pass = pass;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
     public String getMaNV() {
@@ -97,5 +81,19 @@ public class NhanVienDTO {
 
     public void setMaCV(String maCV) {
         this.maCV = maCV;
+    }
+
+    @Override
+    public String toString() {
+        return "NhanVienDTO{" +
+                "maNV='" + maNV + '\'' +
+                ", maCV='" + maCV + '\'' +
+                ", tenNV='" + tenNV + '\'' +
+                ", gioiTinh='" + gioiTinh + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", sdt='" + sdt + '\'' +
+                ", taiKhoan='" + taiKhoan + '\'' +
+                ", matKhau='" + matKhau + '\'' +
+                '}';
     }
 }

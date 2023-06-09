@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         // set navigation
         navigationView = findViewById(R.id.bottom_nav);
         viewPager = findViewById(R.id.ViewPager);
-        // set on click cho floatin them ban
+        // set on click cho floating them ban
         fab = findViewById(R.id.floating);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +92,8 @@ public class HomeActivity extends AppCompatActivity {
             onBackPressed();
         }
         if(id == R.id.order) {
-            Toast.makeText(this, "Order", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(HomeActivity.this, OrderActivity.class);
+            startActivity(intent);
         }
         if(id == R.id.tamTinh) {
             Intent intent = new Intent(HomeActivity.this, HoaDonActivity.class);
@@ -101,9 +102,6 @@ public class HomeActivity extends AppCompatActivity {
         if(id == R.id.Ct_HD) {
             Intent intent = new Intent(HomeActivity.this, ChiTietHoaDonActivity.class);
             startActivity(intent);
-        }
-        if(id == R.id.tienIch) {
-            Toast.makeText(this, "Tiện ích", Toast.LENGTH_SHORT).show();
         }
         return true;
     }

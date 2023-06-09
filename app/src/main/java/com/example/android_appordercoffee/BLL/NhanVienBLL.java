@@ -1,21 +1,25 @@
 package com.example.android_appordercoffee.BLL;
 
-import android.content.Context;
-
-import com.example.android_appordercoffee.DAL.SQLiteHelper;
+import com.example.android_appordercoffee.API.LoginCallback;
+import com.example.android_appordercoffee.API.SoLuongNhanVienCallback;
+import com.example.android_appordercoffee.API.RegisterNhanVienCallback;
+import com.example.android_appordercoffee.DAL.NhanVienDAL;
 import com.example.android_appordercoffee.DTO.NhanVienDTO;
 
 public class NhanVienBLL {
-    SQLiteHelper db;
-    public NhanVienBLL(Context context) {
-        db = new SQLiteHelper(context);
+    private NhanVienDAL QLNhanVien;
+    public NhanVienBLL() {
+        QLNhanVien = new NhanVienDAL();
     }
-    public long addNhanVien(NhanVienDTO nv) {
-        return db.addNhanVien(nv);
+    public void checkLogin(String tk, String mk, final LoginCallback callback) {
+        QLNhanVien.checkLogin(tk, mk, callback);
     }
-    public String checkDN(String tk, String mk) {
-        if (db.checkDN(tk, mk) == false)
-            return "Đăng nhập không thành công";
-        return "Đăng nhập thành công";
+    public void getSoLuongNhanVien(SoLuongNhanVienCallback callback) {
+        QLNhanVien.getSoLuongNhanVien(callback);
     }
+
+    public void registerNhanVien(NhanVienDTO nv, final RegisterNhanVienCallback callback) {
+        QLNhanVien.registerNhanVien(nv, callback);
+    }
+
 }

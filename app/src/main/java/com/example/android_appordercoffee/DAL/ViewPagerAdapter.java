@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.android_appordercoffee.Fragment.FragmentOrder;
 import com.example.android_appordercoffee.Fragment.FragmentSoDoBan_KhuA;
 import com.example.android_appordercoffee.Fragment.FragmentSoDoBan_KhuB;
 

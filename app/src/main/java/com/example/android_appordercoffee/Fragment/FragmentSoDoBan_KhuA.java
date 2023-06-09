@@ -14,13 +14,19 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android_appordercoffee.API.GetMaBanCallback;
+import com.example.android_appordercoffee.API.GetTenChucVuCallback;
 import com.example.android_appordercoffee.BLL.BanBLL;
 import com.example.android_appordercoffee.BLL.ChiTietHoaDon_BLL;
 import com.example.android_appordercoffee.DAL.BanRecycleViewAdapter;
 import com.example.android_appordercoffee.DAL.SQLiteHelper;
 import com.example.android_appordercoffee.DTO.BanDTO;
 import com.example.android_appordercoffee.DTO.CT_HoaDon_DTO;
+import com.example.android_appordercoffee.DTO.Item_ChucVu;
+import com.example.android_appordercoffee.GUI.AddBanActivity;
 import com.example.android_appordercoffee.GUI.ChiTietHoaDonActivity;
+import com.example.android_appordercoffee.GUI.HomeActivity;
+import com.example.android_appordercoffee.GUI.InfoActivity;
 import com.example.android_appordercoffee.GUI.UpdateDeleteBanActivity;
 import com.example.android_appordercoffee.R;
 
@@ -33,6 +39,7 @@ public class FragmentSoDoBan_KhuA extends Fragment {//implements BanRecycleViewA
     private BanRecycleViewAdapter adapter;
     private RecyclerView recyclerView;
     private BanBLL QLBan;
+    ArrayList<BanDTO> listBanA;
 
     @Nullable
     @Override
@@ -45,27 +52,41 @@ public class FragmentSoDoBan_KhuA extends Fragment {//implements BanRecycleViewA
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerView_SoDoBanKhuA);
         adapter = new BanRecycleViewAdapter();
-        QLBan = new BanBLL(getContext());
-        ArrayList<BanDTO> listBan = QLBan.getListBanKhuA();
-        adapter.setListBan(listBan);
-        GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setAdapter(adapter);
+        QLBan = new BanBLL();
         //adapter.setBanListener(this);
+        getMaBanKhuA();
     }
 
     /*@Override
-    public void onBanClick(View view, int position) {
-        BanDTO ban = adapter.getBan(position);
-        Intent intent = new Intent(getActivity(), UpdateDeleteBanActivity.class);
-        intent.putExtra("MaBan", ban);
-        startActivity(intent);
+    public void onBanClick(BanDTO ban) {
+
     }*/
 
     @Override
     public void onResume() { // cho moi lan add la phai lam tuoi lai intent
         super.onResume();
-        ArrayList<BanDTO> listBan = QLBan.getListBanKhuA();
-        adapter.setListBan(listBan);
+        getMaBanKhuA();
+    }
+    private void getMaBanKhuA() {
+        QLBan.getMaBanKhuA(new GetMaBanCallback() {
+            @Override
+            public void onSuccess(ArrayList<BanDTO> listA) {
+                handleGetMaBan(listA);
+            }
+            @Override
+            public void onError() {
+                handleGetMaBan(new ArrayList<>());
+            }
+        });
+    }
+    private void handleGetMaBan(ArrayList<BanDTO> listA) {
+        if (!listA.isEmpty()) {
+            listBanA = listA;
+            ArrayList<BanDTO> listBan = listBanA;
+            adapter.setListBan(listBan);
+            GridLayoutManager manager = new GridLayoutManager(getContext(), 2);
+            recyclerView.setLayoutManager(manager);
+            recyclerView.setAdapter(adapter);
+        }
     }
 }

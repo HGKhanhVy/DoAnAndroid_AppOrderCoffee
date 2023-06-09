@@ -6,7 +6,7 @@
         app:showAsAction="always"
         android:title="Search" />
     <item android:id="@+id/order"
-        android:title="Order"
+        android:title="Danh sách thức uống"
         android:icon="@drawable/baseline_edit_note_24" />
     <item android:id="@+id/tamTinh"
         android:title="Tạm tính"
@@ -14,7 +14,4 @@
     <item android:id="@+id/Ct_HD"
         android:title="Chi tiết hóa đơn"
         android:icon="@drawable/baseline_receipt_24" />
-    <item android:id="@+id/tienIch"
-        android:title="Tiện ích"
-        android:icon="@drawable/baseline_menu_24" />
 </menu>
